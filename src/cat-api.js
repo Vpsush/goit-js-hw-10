@@ -1,4 +1,4 @@
-const BASE_URL = 'https://api.thecatapi.com/v1/breeds';
+const BASE_URL = 'https://api.thecatapi.com/v1';
 const MY_API =
   'live_EpLzqbh8m1FwM1nvu5fwtZDOYnKOUdux4wWBVsLNXpfE9odkAA85MkssjJOhQYTS';
 export function fetchBreeds() {
