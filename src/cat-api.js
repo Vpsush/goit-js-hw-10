@@ -18,7 +18,7 @@ fetchBreeds = () => {
   });
 };
 fetchCatByBreed = breadId => {
-  fetch(
+  return fetch(
     `${BASE_URL}/images/search?api_key=${MY_API}?breed_ids=${breadId}`
   ).then(response => {
     console.log(response);

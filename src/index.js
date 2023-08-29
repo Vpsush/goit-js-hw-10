@@ -20,11 +20,8 @@ function selectByBreed(event) {
   // info.innerHTML('beforeend', markDescription);
   fetchCatByBreed(breedId)
     .then(data => {
-      const { BASE_URL, breedId } = data[0];
-      info.innerHTML(
-        'beforeend',
-        `class = images img src="${BASE_URL}" alt="${breedId}"`
-      );
+      const { url, breeds } = data[0];
+      info.innerHTML = `class = images img src="${url}" alt="${breeds[0].name}"`;
     })
 
     .catch(error => {
