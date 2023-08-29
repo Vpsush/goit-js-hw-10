@@ -1,9 +1,7 @@
-import axios from 'axios';
 import { fetchBreeds, fetchCatByBreed } from './cat-api';
 import SlimSelect from 'slim-select';
-import { Notify } from 'notiflix';
-
-axios.defaults.headers.common['x-api-key'] = 'api-key';
+import 'slim-select/dist/slimselect.css';
+import Notiflix from 'notiflix';
 
 const breed = document.querySelector('.breed-select');
 const loader = document.querySelector('.loader');
@@ -14,31 +12,50 @@ breed.addEventListener('change', selectByBreed);
 
 function selectByBreed(event) {
   const breedId = event.currentTarget.value;
+  // const markPictures = `img class = catPictures img src="${breed.url}" alt="${breed.id}" width = "400"`;
+  // const markDescription = `class = catDescription-title <h2 class="cat-info-desc-title">${breed.breeds[0].name}</h2>
+  // <p class="cat-info-desc-desc">${breed.breeds[0].description}</p>
+  // <p class="cat-info-desc-temp"><b>Temperament:</b> ${breed.breeds[0].temperament}</p>`;
+  // info.innerHTML('beforeend', markPictures);
+  // info.innerHTML('beforeend', markDescription);
   fetchCatByBreed(breedId)
     .then(data => {
-      const { url, breeds } = data[0];
-      info.innerHTML = `img src="${url}" alt="${breeds[0].name}"`;
+      const { BASE_URL, breedId } = data[0];
+      info.innerHTML(
+        'beforeend',
+        `class = images img src="${BASE_URL}" alt="${breedId}"`
+      );
     })
-    .catch(onFetchError);
+
+    .catch(error => {
+      console.log(error);
+      Notiflix.Notify.failure(
+        'Oops! Something went wrong! Try reloading the page!'
+      );
+    });
 }
 
 let arrayBreeds = [];
 fetchBreeds()
-  .then(date => {
-    date.forEach(element => {
+  .then(data => {
+    data.forEach(element => {
       arrayBreeds.push({ text: element.name, value: element.id });
-      return arrayBreeds;
     });
 
     new SlimSelect({
       select: breed,
-      date: arrayBreeds,
+      data: arrayBreeds,
     });
   })
-  .catch(onFetchError);
+  .catch(error => {
+    console.log(error);
+    Notiflix.Notify.failure(
+      'Oops! Something went wrong! Try reloading the page!'
+    );
+  });
 
-function onFetchError(error) {
-  return Notify.failure(
-    'Oops! Something went wrong! Try reloading the page or select another cat breed!'
-  );
-}
+// function onFetchError(error) {
+//   return Notify.failure(
+//     'Oops! Something went wrong! Try reloading the page or select another cat breed!'
+//   );
+// }
