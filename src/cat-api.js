@@ -17,15 +17,23 @@ fetchBreeds = () => {
     return response.json();
   });
 };
+// fetchCatByBreed = breadId => {
+//   return fetch(
+//     `${BASE_URL}/images/search?api_key=${MY_API}?breed_ids=${breadId}`
+//   ).then(response => {
+//     console.log(response);
+//     if (!response.ok) {
+//       throw new Error(response.status);
+//     }
+//     return response.json();
+//   });
+// };
+
 fetchCatByBreed = breadId => {
-  return fetch(
-    `${BASE_URL}/images/search?api_key=${MY_API}?breed_ids=${breadId}`
-  ).then(response => {
-    console.log(response);
-    if (!response.ok) {
-      throw new Error(response.status);
-    }
-    return response.json();
-  });
+  return axios
+    .get(`${BASE_URL}/images/search?api_key=${MY_API}?breed_ids=${breadId}`)
+    .then(data => console.log(data))
+    .catch(error => console.log(error));
 };
+
 export { fetchBreeds, fetchCatByBreed };

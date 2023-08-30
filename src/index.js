@@ -23,7 +23,6 @@ function selectByBreed(event) {
       const { url, breeds } = data[0];
       info.innerHTML = `class = images img src="${url}" alt="${breeds[0].name}"`;
     })
-
     .catch(error => {
       console.log(error);
       Notiflix.Notify.failure(
@@ -40,8 +39,8 @@ fetchBreeds()
     });
 
     new SlimSelect({
-      select: breed,
-      data: arrayBreeds,
+      select: '.breed-select',
+      data: [{ text: 'element.name' }, { value: 'element.id' }],
     });
   })
   .catch(error => {
