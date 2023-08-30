@@ -12,18 +12,20 @@ breed.addEventListener('change', selectByBreed);
 
 function selectByBreed(event) {
   const breedId = event.currentTarget.value;
-  // const markPictures = `img class = catPictures img src="${breed.url}" alt="${breed.id}" width = "400"`;
-  // const markDescription = `class = catDescription-title <h2 class="cat-info-desc-title">${breed.breeds[0].name}</h2>
-  // <p class="cat-info-desc-desc">${breed.breeds[0].description}</p>
-  // <p class="cat-info-desc-temp"><b>Temperament:</b> ${breed.breeds[0].temperament}</p>`;
-  // info.innerHTML('beforeend', markPictures);
-  // info.innerHTML('beforeend', markDescription);
   fetchCatByBreed(breedId)
     .then(data => {
       const { url, breeds } = data[0];
-      info.innerHTML = `class = images img src="${url}" alt="${breeds[0].name}"`;
+      // const markPictures = `<img class = images img src="${breed.url}" alt="${breed.id}"/>`;
+      // const markDescription = `<h2 class= title>${breed.breeds[0].name}</h2><p class=description>${breed.breeds[0].description}</p><img class = images img src="${url}" alt="${breeds[0].name}"/>`;
+      list.insertAdjacentHTML(
+        'beforebegin',
+        `<img class = images img src="${url}" alt="${breeds[0].name}"/>`
+      );
+      list.insertAdjacentHTML(
+        'beforebegin',
+        `<h2 class= title>${breed.breeds[0].name}</h2><p class=description>${breed.breeds[0].description}</p><img class = images img src="${url}" alt="${breeds[0].name}"/>`
+      );
     })
-
     .catch(error => {
       console.log(error);
       Notiflix.Notify.failure(
