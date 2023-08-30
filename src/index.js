@@ -17,11 +17,11 @@ function selectByBreed(event) {
       const { url, breeds } = data[0];
       // const markPictures = `<img class = images img src="${breed.url}" alt="${breed.id}"/>`;
       // const markDescription = `<h2 class= title>${breed.breeds[0].name}</h2><p class=description>${breed.breeds[0].description}</p><img class = images img src="${url}" alt="${breeds[0].name}"/>`;
-      list.insertAdjacentHTML(
+      info.insertAdjacentHTML(
         'beforebegin',
         `<img class = images img src="${url}" alt="${breeds[0].name}"/>`
       );
-      list.insertAdjacentHTML(
+      info.insertAdjacentHTML(
         'beforebegin',
         `<h2 class= title>${breed.breeds[0].name}</h2><p class=description>${breed.breeds[0].description}</p><img class = images img src="${url}" alt="${breeds[0].name}"/>`
       );
