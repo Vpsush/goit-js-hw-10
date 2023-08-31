@@ -32,8 +32,8 @@ const fetchBreeds = () => {
 const fetchCatByBreed = breadId => {
   return axios
     .get(`${BASE_URL}/images/search?api_key=${MY_API}&breed_ids=${breadId}`)
-    .then(data => {
-      return console.log(data);
+    .then(resp => {
+      return resp.data;
     })
     .catch(error => console.log(error));
 };

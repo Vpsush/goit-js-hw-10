@@ -1,1 +1,40 @@
 @import '~node_modules/modern-normalize/modern-normalize.css';
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+.images {
+  width: 500px;
+  height: 500px;
+}
+.cat-info {
+  display: flex;
+  flex-direction: row;
+  margin-top: 20px;
+}
+.allInfo {
+  margin: 20px;
+}
+.tempContainer {
+  display: flex;
+}
+.temperament {
+  margin-left: 10px;
+  margin-top: 22px;
+  //   text-align: center;
+  //   justify-content: center;
+}
+.is-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  border: 0;
+  padding: 0;
+  white-space: nowrap;
+  clip-path: inset(100%);
+  clip: rect(0 0 0 0);
+  overflow: hidden;
+}
