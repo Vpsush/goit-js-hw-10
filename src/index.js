@@ -24,7 +24,7 @@ function selectByBreed(event) {
       loader.classList.add('is-hidden', 'loader');
       info.classList.remove('is-hidden');
       const { url, breeds } = data[0];
-      const markPictures = `<img class = "images" src="${url}" alt="${breeds[0].name}"/>`;
+      // const markPictures = `<img class = "images" src="${url}" alt="${breeds[0].name}"/>`;
       const markDescription = `<img class = "images" src="${url}" alt="${breeds[0].name}"/>
       <div class = "allInfo">
       <h2 class= "title">${breeds[0].name}</h2>
@@ -32,7 +32,7 @@ function selectByBreed(event) {
       <div class = "tempContainer">
       <h3 class = "titleTemp">Temperament:</h3>
       <p class="temperament">${breeds[0].temperament}</p></div></div>`;
-      info.innerHTML = markPictures;
+      // info.innerHTML = markPictures;
       info.innerHTML = markDescription;
     })
     .catch(error => {
