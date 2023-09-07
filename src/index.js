@@ -32,7 +32,6 @@ function selectByBreed(event) {
       <div class = "tempContainer">
       <h3 class = "titleTemp">Temperament:</h3>
       <p class="temperament">${breeds[0].temperament}</p></div></div>`;
-      // info.innerHTML = markPictures;
       info.innerHTML = markDescription;
     })
     .catch(error => {
